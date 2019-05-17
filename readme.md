@@ -1,9 +1,6 @@
 # Inspired Deck interface for PHP
 
-<p align="center">
-<a href="https://travis-ci.org/lerouse/inspireddeck-php"><img src="https://travis-ci.org/lerouse/inspireddeck-php.svg" alt="Build Status"></a>
-</p>
-
+<a href="https://travis-ci.org/mblsolutions/inspireddeck-php"><img src="https://travis-ci.org/mblsolutions/inspireddeck-php.svg" alt="Build Status"></a>
 
 The Inspired Deck Interface for PHP gives you an API interface into the Inspired Deck Platform
 for your PHP applications.
