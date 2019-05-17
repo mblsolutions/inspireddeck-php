@@ -3,7 +3,7 @@
     "description": "Official Inspired Deck interface for PHP applications.",
     "keywords": ["inspiredsuite", "inspireddeck", "giftcard", "e-gift", "laravel"],
     "type": "package",
-    "license": "GNU",
+    "license": "MIT",
     "authors": [
         {
             "name": "MBL Solutions Ltd.",
