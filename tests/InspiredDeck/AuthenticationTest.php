@@ -2,15 +2,9 @@
 
 namespace MBLSolutions\InspiredDeck\Tests;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Response;
-use MBLSolutions\InspiredDeck\Api\ApiRequestor;
 use MBLSolutions\InspiredDeck\Authentication;
 use MBLSolutions\InspiredDeck\Exceptions\AuthenticationException;
 use MBLSolutions\InspiredDeck\InspiredDeck;
-use MBLSolutions\Stubs\HttpResponseStubs;
 use MBLSolutions\TestCase;
 
 class AuthenticationTest extends TestCase
