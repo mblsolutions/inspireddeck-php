@@ -5,6 +5,7 @@ namespace MBLSolutions\InspiredDeck\Api;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
 use MBLSolutions\InspiredDeck\Exceptions\MissingTokenException;
+use MBLSolutions\InspiredDeck\Exceptions\ValidationException;
 use MBLSolutions\InspiredDeck\InspiredDeck;
 
 class ApiRequestor

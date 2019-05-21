@@ -10,11 +10,14 @@ class Brand extends ApiResource
     /**
      * View all Brands
      *
+     * @param int|null $page
      * @return array
      */
-    public function all(): array
+    public function all(int $page = null): array
     {
-        return $this->getApiRequestor()->getRequest('brand');
+        return $this->getApiRequestor()->getRequest('/api/brand', [
+            'page' => $page
+        ]);
     }
 
     /**
@@ -25,7 +28,7 @@ class Brand extends ApiResource
      */
     public function create(array $params): array
     {
-        return $this->getApiRequestor()->postRequest('brand', $params);
+        return $this->getApiRequestor()->postRequest('/api/brand', $params);
     }
 
     /**
@@ -36,7 +39,18 @@ class Brand extends ApiResource
      */
     public function update($id, array $params): array
     {
-        return $this->getApiRequestor()->patchRequest('brand/' . $id, $params);
+        return $this->getApiRequestor()->patchRequest('/api/brand/' . $id, $params);
+    }
+
+    /**
+     * Show a Brand
+     *
+     * @param $id
+     * @return array
+     */
+    public function show($id): array
+    {
+        return $this->getApiRequestor()->getRequest('/api/brand/' . $id);
     }
 
     /**
@@ -47,7 +61,7 @@ class Brand extends ApiResource
      */
     public function delete($id): array
     {
-        return $this->getApiRequestor()->patchRequest('brand/' . $id);
+        return $this->getApiRequestor()->patchRequest('/api/brand/' . $id);
     }
 
 }

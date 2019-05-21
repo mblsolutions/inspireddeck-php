@@ -16,7 +16,7 @@ abstract class ApiResource
     public function __construct()
     {
         $client = new Client([
-            'base_uri' => InspiredDeck::getBaseUri() . '/api',
+            'base_uri' => InspiredDeck::getBaseUri(),
         ]);
 
         $this->apiRequestor = new ApiRequestor($client);
