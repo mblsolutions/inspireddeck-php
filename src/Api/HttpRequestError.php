@@ -4,6 +4,7 @@ namespace MBLSolutions\InspiredDeck\Api;
 
 use GuzzleHttp\Exception\ClientException;
 use MBLSolutions\InspiredDeck\Exceptions\AuthenticationException;
+use MBLSolutions\InspiredDeck\Exceptions\NotFoundException;
 use MBLSolutions\InspiredDeck\Exceptions\PermissionDeniedException;
 use MBLSolutions\InspiredDeck\Exceptions\ValidationException;
 
@@ -12,6 +13,8 @@ class HttpRequestError
     const HTTP_UNAUTHORIZED = 401;
 
     const HTTP_FORBIDDEN = 403;
+
+    const HTTP_NOT_FOUND = 404;
 
     const HTTP_UNPROCESSABLE_ENTITY = 422;
 
@@ -28,6 +31,10 @@ class HttpRequestError
 
         if ($exception->getCode() === self::HTTP_FORBIDDEN) {
             static::throwException(PermissionDeniedException::class, $exception);
+        }
+
+        if ($exception->getCode() === self::HTTP_NOT_FOUND) {
+            static::throwException(NotFoundException::class, $exception);
         }
 
         if ($exception->getCode() === self::HTTP_UNPROCESSABLE_ENTITY) {

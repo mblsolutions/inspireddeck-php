@@ -61,7 +61,7 @@ class Brand extends ApiResource
      */
     public function delete($id): array
     {
-        return $this->getApiRequestor()->patchRequest('/api/brand/' . $id);
+        return $this->getApiRequestor()->deleteRequest('/api/brand/' . $id);
     }
 
 }
