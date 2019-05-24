@@ -14,6 +14,8 @@ class BrandTest extends TestCase
     {
         parent::setUp();
 
+        InspiredDeck::setToken('test_token');
+
         $this->brand = new Brand();
     }
 

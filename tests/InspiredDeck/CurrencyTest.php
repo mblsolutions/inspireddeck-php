@@ -14,6 +14,8 @@ class CurrencyTest extends TestCase
     {
         parent::setUp();
 
+        InspiredDeck::setToken('test_token');
+
         $this->currency = new Currency();
     }
 

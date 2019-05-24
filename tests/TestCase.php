@@ -36,7 +36,6 @@ class TestCase extends \PHPUnit\Framework\TestCase
         }
     }
 
-
     /**
      * Mock Expected HTTP Response
      *
