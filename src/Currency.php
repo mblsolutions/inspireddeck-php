@@ -21,6 +21,16 @@ class Currency extends ApiResource
     }
 
     /**
+     * Select Brands for Input
+     *
+     * @return array
+     */
+    public function select(): array
+    {
+        return $this->getApiRequestor()->getRequest('/api/currency/select');
+    }
+
+    /**
      * Create a new Brand
      *
      * @param array $params

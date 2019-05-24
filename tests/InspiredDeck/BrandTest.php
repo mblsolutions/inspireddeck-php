@@ -41,6 +41,27 @@ class BrandTest extends TestCase
 
         $this->assertEquals($response, $this->getMockedResponseBody());
     }
+    
+    /** @test **/
+    public function can_get_select_list(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                [
+                    'id' => 1,
+                    'name' => 'Test Brand 1',
+                ],
+                [
+                    'id' => 2,
+                    'name' => 'Test Brand 2',
+                ]
+            ]
+        ]);
+
+        $response = $this->brand->select();
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
 
     /** @test **/
     public function can_create()

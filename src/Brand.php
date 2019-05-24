@@ -21,6 +21,16 @@ class Brand extends ApiResource
     }
 
     /**
+     * Select Brands for Input
+     *
+     * @return array
+     */
+    public function select(): array
+    {
+        return $this->getApiRequestor()->getRequest('/api/brand/select');
+    }
+
+    /**
      * Create a new Brand
      *
      * @param array $params

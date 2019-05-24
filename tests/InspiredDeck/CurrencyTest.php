@@ -43,6 +43,27 @@ class CurrencyTest extends TestCase
     }
 
     /** @test **/
+    public function can_get_select_list(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                [
+                    'id' => 1,
+                    'name' => 'Pound Sterling',
+                ],
+                [
+                    'id' => 2,
+                    'name' => 'Points',
+                ]
+            ]
+        ]);
+
+        $response = $this->currency->select();
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
+    /** @test **/
     public function can_create()
     {
         $this->mockExpectedHttpResponse([
