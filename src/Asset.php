@@ -21,6 +21,16 @@ class Asset extends ApiResource
     }
 
     /**
+     * Select Assets for Input
+     *
+     * @return array
+     */
+    public function select(): array
+    {
+        return $this->getApiRequestor()->getRequest('/api/asset/select');
+    }
+
+    /**
      * Create a new Asset
      *
      * @param array $params

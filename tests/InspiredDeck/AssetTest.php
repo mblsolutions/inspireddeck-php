@@ -56,7 +56,7 @@ class AssetTest extends TestCase
             ]
         ]);
 
-        $response = $this->asset->all();
+        $response = $this->asset->select();
 
         $this->assertEquals($response, $this->getMockedResponseBody());
     }
