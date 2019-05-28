@@ -23,11 +23,12 @@ class Code extends ApiResource
     /**
      * Create a new Asset
      *
+     * @param int $asset_id
      * @param array $params
      * @return array
      */
-    public function create(array $params): array
+    public function create(int $asset_id, array $params): array
     {
-        return $this->getApiRequestor()->postRequest('/api/code', $params);
+        return $this->getApiRequestor()->postRequest('/api/code/' . $asset_id, $params);
     }
 }

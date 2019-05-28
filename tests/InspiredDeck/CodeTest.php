@@ -45,8 +45,7 @@ class CodeTest extends TestCase
             'message' => 'Code Generation Request Successful.'
         ], 202);
 
-        $response = $this->code->create([
-            'profile_id' => 1,
+        $response = $this->code->create(1, [
             'quantity' => 1000,
         ]);
 
