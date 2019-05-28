@@ -47,6 +47,27 @@ class ExpirationRuleTest extends TestCase
     }
 
     /** @test **/
+    public function can_get_select_list()
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                [
+                    'id' => 1,
+                    'name' => 'Expiration Rule 1',
+                ],
+                [
+                    'id' => 2,
+                    'name' => 'Expiration Rule 2',
+                ]
+            ]
+        ]);
+
+        $response = $this->expirationRule->all();
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
+    /** @test **/
     public function can_create()
     {
         $this->mockExpectedHttpResponse([

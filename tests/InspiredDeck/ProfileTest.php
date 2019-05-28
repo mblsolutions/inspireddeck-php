@@ -41,6 +41,27 @@ class ProfileTest extends TestCase
     }
 
     /** @test **/
+    public function can_get_select_list()
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                [
+                    'id' => 1,
+                    'name' => 'Test Profile',
+                ],
+                [
+                    'id' => 2,
+                    'name' => 'Test Profile 2',
+                ]
+            ]
+        ]);
+
+        $response = $this->profile->select();
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
+    /** @test **/
     public function can_create()
     {
         $this->mockExpectedHttpResponse([

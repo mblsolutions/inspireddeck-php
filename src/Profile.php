@@ -21,6 +21,16 @@ class Profile extends ApiResource
     }
 
     /**
+     * Select Profiles for Input
+     *
+     * @return array
+     */
+    public function select(): array
+    {
+        return $this->getApiRequestor()->getRequest('/api/profile/select');
+    }
+
+    /**
      * Create a new Profile
      *
      * @param array $params

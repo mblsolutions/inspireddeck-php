@@ -21,6 +21,16 @@ class ActivationRule extends ApiResource
     }
 
     /**
+     * Select Activation Rules for Input
+     *
+     * @return array
+     */
+    public function select(): array
+    {
+        return $this->getApiRequestor()->getRequest('/api/activation-rule/select');
+    }
+
+    /**
      * Create a new Activation Rule
      *
      * @param array $params

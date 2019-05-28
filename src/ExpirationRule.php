@@ -21,6 +21,16 @@ class ExpirationRule extends ApiResource
     }
 
     /**
+     * Select Expiration Rules for Input
+     *
+     * @return array
+     */
+    public function select(): array
+    {
+        return $this->getApiRequestor()->getRequest('/api/expiration-rule/select');
+    }
+
+    /**
      * Create a new Expiration Rule
      *
      * @param array $params

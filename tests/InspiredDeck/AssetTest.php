@@ -41,6 +41,27 @@ class AssetTest extends TestCase
     }
 
     /** @test **/
+    public function can_get_select_list()
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                [
+                    'id' => 1,
+                    'name' => 'Test Asset 1',
+                ],
+                [
+                    'id' => 2,
+                    'name' => 'Test Asset 2',
+                ]
+            ]
+        ]);
+
+        $response = $this->asset->all();
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
+    /** @test **/
     public function can_create()
     {
         $this->mockExpectedHttpResponse([

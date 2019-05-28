@@ -47,6 +47,27 @@ class ActivationRuleTest extends TestCase
     }
 
     /** @test **/
+    public function can_get_select_list()
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                [
+                    'id' => 1,
+                    'name' => 'Activation Rule 1',
+                ],
+                [
+                    'id' => 2,
+                    'name' => 'Activation Rule 2',
+                ]
+            ]
+        ]);
+
+        $response = $this->activationRule->all();
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
+    /** @test **/
     public function can_create()
     {
         $this->mockExpectedHttpResponse([
