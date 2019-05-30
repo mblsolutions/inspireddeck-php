@@ -62,6 +62,21 @@ class AssetTest extends TestCase
     }
 
     /** @test **/
+    public function can_show()
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'id' => 1,
+                'name' => 'Test Asset 1',
+            ]
+        ]);
+
+        $response = $this->asset->show(1);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
+    /** @test **/
     public function can_create()
     {
         $this->mockExpectedHttpResponse([

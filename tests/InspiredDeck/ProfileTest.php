@@ -62,6 +62,21 @@ class ProfileTest extends TestCase
     }
 
     /** @test **/
+    public function can_show()
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'id' => 1,
+                'name' => 'Test Profile 1',
+            ]
+        ]);
+
+        $response = $this->profile->show(1);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
+    /** @test **/
     public function can_create()
     {
         $this->mockExpectedHttpResponse([

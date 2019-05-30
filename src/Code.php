@@ -31,4 +31,15 @@ class Code extends ApiResource
     {
         return $this->getApiRequestor()->postRequest('/api/code/' . $asset_id, $params);
     }
+
+    /**
+     * Show a Brand
+     *
+     * @param int $serial
+     * @return array
+     */
+    public function show(int $serial): array
+    {
+        return $this->getApiRequestor()->getRequest('/api/code/' . $serial);
+    }
 }

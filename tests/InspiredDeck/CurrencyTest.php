@@ -64,6 +64,21 @@ class CurrencyTest extends TestCase
     }
 
     /** @test **/
+    public function can_show()
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'id' => 1,
+                'name' => 'Pound Sterling',
+            ]
+        ]);
+
+        $response = $this->currency->show(1);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
+    /** @test **/
     public function can_create()
     {
         $this->mockExpectedHttpResponse([

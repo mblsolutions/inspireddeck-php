@@ -39,6 +39,20 @@ class CodeTest extends TestCase
     }
 
     /** @test **/
+    public function can_show()
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'serial' => 12345678,
+            ]
+        ]);
+
+        $response = $this->code->show(12345678);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
+    /** @test **/
     public function can_create()
     {
         $this->mockExpectedHttpResponse([
