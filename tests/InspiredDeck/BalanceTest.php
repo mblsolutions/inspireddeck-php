@@ -1,0 +1,38 @@
+<?php
+
+namespace MBLSolutions\InspiredDeck;
+
+use MBLSolutions\TestCase;
+
+class BalanceTest extends TestCase
+{
+    /** @var Balance balance */
+    protected $balance;
+
+    /** {@inheritdoc} **/
+    public function setUp()
+    {
+        parent::setUp();
+
+        InspiredDeck::setToken('test_token');
+
+        $this->balance = new Balance();
+    }
+
+    /** @test **/
+    public function can_perform_a_balance_check()
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'balance' => 1000
+            ]
+        ]);
+
+        $response = $this->balance->balance([
+            'serial' => 1234567890
+        ]);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
+}
