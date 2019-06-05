@@ -43,32 +43,4 @@ class Code extends ApiResource
         return $this->getApiRequestor()->getRequest('/api/code/' . $serial);
     }
 
-    /**
-     * Add funds to a code
-     *
-     * @param int $serial
-     * @param int $amount
-     * @return array
-     */
-    public function credit(int $serial, int $amount): array
-    {
-        return $this->getApiRequestor()->postRequest('/api/code/' . $serial . '/credit', [
-            'amount' => $amount
-        ]);
-    }
-
-    /**
-     * Remove funds from a code
-     *
-     * @param int $serial
-     * @param int $amount
-     * @return array
-     */
-    public function debit(int $serial, int $amount): array
-    {
-        return $this->getApiRequestor()->postRequest('/api/code/' . $serial . '/debit', [
-            'amount' => $amount
-        ]);
-
-    }
 }
