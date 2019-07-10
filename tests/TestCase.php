@@ -1,6 +1,6 @@
 <?php
 
-namespace MBLSolutions;
+namespace MBLSolutions\InspiredDeck\Tests;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;

@@ -1,8 +1,10 @@
 <?php
 
-namespace MBLSolutions\InspiredDeck;
+namespace MBLSolutions\InspiredDeck\Tests\InspiredDeck;
 
-use MBLSolutions\TestCase;
+use MBLSolutions\InspiredDeck\InspiredDeck;
+use MBLSolutions\InspiredDeck\Status;
+use MBLSolutions\InspiredDeck\Tests\TestCase;
 
 class StatusTest extends TestCase
 {

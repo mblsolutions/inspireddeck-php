@@ -1,8 +1,9 @@
 <?php
 
-namespace MBLSolutions\InspiredDeck\Exceptions;
+namespace MBLSolutions\InspiredDeck\Tests\InspiredDeck\Exceptions;
 
-use MBLSolutions\TestCase;
+use MBLSolutions\InspiredDeck\Exceptions\ValidationException;
+use MBLSolutions\InspiredDeck\Tests\TestCase;
 
 class ValidationExceptionTest extends TestCase
 {

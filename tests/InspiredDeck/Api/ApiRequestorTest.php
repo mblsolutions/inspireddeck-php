@@ -1,16 +1,14 @@
 <?php
 
-namespace MBLSolutions\InspiredDeck\Tests\Api;
+namespace MBLSolutions\InspiredDeck\Tests\InspiredDeck\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Response;
 use MBLSolutions\InspiredDeck\Api\ApiRequestor;
-use MBLSolutions\InspiredDeck\Exceptions\PermissionDeniedException;
 use MBLSolutions\InspiredDeck\InspiredDeck;
-use MBLSolutions\Stubs\HttpResponseStubs;
-use MBLSolutions\TestCase;
+use MBLSolutions\InspiredDeck\Tests\Stubs\HttpResponseStubs;
+use MBLSolutions\InspiredDeck\Tests\TestCase;
 
 class ApiRequestorTest extends TestCase
 {

@@ -43,4 +43,15 @@ class Code extends ApiResource
         return $this->getApiRequestor()->getRequest('/api/code/' . $serial);
     }
 
+    /**
+     * Select Actions for Input
+     *
+     * @param array $parameters
+     * @return array
+     */
+    public function search(array $parameters = []): array
+    {
+        return $this->getApiRequestor()->postRequest('/api/search/code', $parameters);
+    }
+
 }

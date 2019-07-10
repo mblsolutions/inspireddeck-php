@@ -1,12 +1,14 @@
 <?php
 
-namespace MBLSolutions\InspiredDeck;
+namespace MBLSolutions\InspiredDeck\Tests\InspiredDeck;
 
-use MBLSolutions\TestCase;
+use MBLSolutions\InspiredDeck\ExpirationRule;
+use MBLSolutions\InspiredDeck\InspiredDeck;
+use MBLSolutions\InspiredDeck\Tests\TestCase;
 
 class ExpirationRuleTest extends TestCase
 {
-    /** @var ExpirationRule() $expirationRule */
+    /** @var ExpirationRule $expirationRule */
     protected $expirationRule;
 
     /** {@inheritdoc} **/

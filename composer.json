@@ -25,8 +25,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "MBLSolutions\\": "tests",
-            "MBLSolutions\\InspiredDeck\\Tests\\": "tests/InspiredDeck"
+            "MBLSolutions\\InspiredDeck\\Tests\\": "tests"
         }
     },
     "minimum-stability": "dev",

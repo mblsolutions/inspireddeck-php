@@ -1,6 +1,6 @@
 <?php
 
-namespace MBLSolutions\Stubs;
+namespace MBLSolutions\InspiredDeck\Tests\Stubs;
 
 use GuzzleHttp\Psr7\Response;
 

@@ -1,8 +1,10 @@
 <?php
 
-namespace MBLSolutions\InspiredDeck;
+namespace MBLSolutions\InspiredDeck\Tests\InspiredDeck;
 
-use MBLSolutions\TestCase;
+use MBLSolutions\InspiredDeck\Code;
+use MBLSolutions\InspiredDeck\InspiredDeck;
+use MBLSolutions\InspiredDeck\Tests\TestCase;
 
 class CodeTest extends TestCase
 {
@@ -61,6 +63,25 @@ class CodeTest extends TestCase
 
         $response = $this->code->create(1, [
             'quantity' => 1000,
+        ]);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
+    /** @test **/
+    public function can_search_for_code(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'serial' => 123456789
+            ]
+        ]);
+
+        $response = $this->code->search([
+            'serial' => 123456789,
+            'pan' => null,
+            'customer' => null,
+            'transaction' => null,
         ]);
 
         $this->assertEquals($response, $this->getMockedResponseBody());

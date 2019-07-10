@@ -1,9 +1,11 @@
 <?php
 
-namespace MBLSolutions\InspiredDeck\Api;
+namespace MBLSolutions\InspiredDeck\Tests\InspiredDeck\Api;
 
 use GuzzleHttp\Client;
-use MBLSolutions\TestCase;
+use MBLSolutions\InspiredDeck\Api\ApiRequestor;
+use MBLSolutions\InspiredDeck\Api\ApiResource;
+use MBLSolutions\InspiredDeck\Tests\TestCase;
 
 class ApiResourceTest extends TestCase
 {

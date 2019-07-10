@@ -1,10 +1,10 @@
 <?php
 
-namespace MBLSolutions\InspiredDeck\Tests;
+namespace MBLSolutions\InspiredDeck\Tests\InspiredDeck;
 
 use MBLSolutions\InspiredDeck\Exceptions\MissingTokenException;
 use MBLSolutions\InspiredDeck\InspiredDeck;
-use MBLSolutions\TestCase;
+use MBLSolutions\InspiredDeck\Tests\TestCase;
 
 class InspiredDeckTest extends TestCase
 {

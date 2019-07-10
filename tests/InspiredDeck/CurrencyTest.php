@@ -1,12 +1,14 @@
 <?php
 
-namespace MBLSolutions\InspiredDeck;
+namespace MBLSolutions\InspiredDeck\Tests\InspiredDeck;
 
-use MBLSolutions\TestCase;
+use MBLSolutions\InspiredDeck\Currency;
+use MBLSolutions\InspiredDeck\InspiredDeck;
+use MBLSolutions\InspiredDeck\Tests\TestCase;
 
 class CurrencyTest extends TestCase
 {
-    /** @var Brand $currency */
+    /** @var Currency $currency */
     protected $currency;
 
     /** {@inheritdoc} **/
