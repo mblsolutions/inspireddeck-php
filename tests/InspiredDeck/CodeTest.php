@@ -87,4 +87,18 @@ class CodeTest extends TestCase
         $this->assertEquals($response, $this->getMockedResponseBody());
     }
 
+    /** @test **/
+    public function refresh_code_data(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'serial' => 123456789
+            ]
+        ]);
+
+        $response = $this->code->refresh(123456789);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
 }

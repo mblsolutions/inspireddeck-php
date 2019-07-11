@@ -54,4 +54,15 @@ class Code extends ApiResource
         return $this->getApiRequestor()->postRequest('/api/search/code', $parameters);
     }
 
+    /**
+     * Refresh Code data
+     *
+     * @param int $serial
+     * @return array
+     */
+    public function refresh(int $serial): array
+    {
+        return $this->getApiRequestor()->getRequest('/api/refresh/' . $serial);
+    }
+
 }
