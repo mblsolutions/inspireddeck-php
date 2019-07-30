@@ -40,4 +40,23 @@ class AssetBatchTest extends TestCase
         $this->assertEquals($response, $this->getMockedResponseBody());
     }
 
+    /** @test **/
+    public function can_show_asset_batch()
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                [
+                    'serial' => 1234567890,
+                ],
+                [
+                    'serial' => 1234567891,
+                ]
+            ]
+        ]);
+
+        $response = $this->assetBatch->show(1);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
 }
