@@ -72,7 +72,7 @@ class ApiRequestor
     {
         return $this->makeHttpRequest('post', $uri, [
             'headers' => $headers ?? $this->authenticatedHeaders(),
-            'form_params' => $params
+            'json' => $params
         ]);
     }
 
@@ -89,7 +89,7 @@ class ApiRequestor
     {
         return $this->makeHttpRequest('patch', $uri, [
             'headers' => $headers ?? $this->authenticatedHeaders(),
-            'form_params' => $params
+            'json' => $params
         ]);
     }
 

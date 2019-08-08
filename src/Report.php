@@ -41,7 +41,13 @@ class Report extends ApiResource
      */
     public function render(int $id, array $params = []): array
     {
-        return $this->getApiRequestor()->postRequest('/api/report/' . $id, $params);
+        if (isset($params['page'])) {
+            $uri = '/api/report/' . $id . '?page=' . $params['page'];
+        } else {
+            $uri = '/api/report/' . $id;
+        }
+
+        return $this->getApiRequestor()->postRequest($uri, $params);
     }
     
     /**

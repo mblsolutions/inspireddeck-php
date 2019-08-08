@@ -48,7 +48,7 @@ class ManageReport extends ApiResource
      * @param $id
      * @return array
      */
-    public function show($id)
+    public function show($id): array
     {
         return $this->getApiRequestor()->getRequest('/api/report/manage/' . $id);
     }
