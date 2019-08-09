@@ -85,16 +85,16 @@ class ReportTest extends TestCase
     }
 
     /** @test **/
-    public function can_get_select_type_list()
+    public function can_get_data_type_list()
     {
         $this->mockExpectedHttpResponse([
             'data' => [
-                'MBLSolutions\Report\Select\CastString',
-                'MBLSolutions\Report\Select\CastUppercaseString',
+                '\MBLSolutions\Report\DataType\CastString::class',
+                '\MBLSolutions\Report\DataType\CastUppercaseString::class',
             ]
         ]);
 
-        $response = $this->report->selectType();
+        $response = $this->report->dataType();
 
         $this->assertEquals($response, $this->getMockedResponseBody());
     }

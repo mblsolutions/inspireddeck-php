@@ -71,13 +71,13 @@ class Report extends ApiResource
     }
 
     /**
-     * Get available report select types
+     * Get available report data types
      *
      * @return array
      */
-    public function selectType(): array
+    public function dataType(): array
     {
-        return $this->getApiRequestor()->getRequest('/api/report/select/type');
+        return $this->getApiRequestor()->getRequest('/api/report/data/type');
     }
 
     /**
