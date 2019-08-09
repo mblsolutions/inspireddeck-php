@@ -116,4 +116,21 @@ class ManageReportTest extends TestCase
         $this->assertEquals($response, $this->getMockedResponseBody());
     }
 
+    /** @test **/
+    public function can_get_settings()
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'connections' => [],
+                'middleware' => [],
+                'models' => [],
+                'select_types' => []
+            ]
+        ]);
+
+        $response = $this->report->settings();
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
 }

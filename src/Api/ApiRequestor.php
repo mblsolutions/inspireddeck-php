@@ -51,7 +51,7 @@ class ApiRequestor
      * @return array
      * @throws mixed
      */
-    public function getRequest(string $uri, array $params = [], array $headers = null)
+    public function getRequest(string $uri, array $params = [], array $headers = null): array
     {
         return $this->makeHttpRequest('get', $uri, [
             'headers' => $headers ?? $this->authenticatedHeaders(),

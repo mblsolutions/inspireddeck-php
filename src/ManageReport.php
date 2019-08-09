@@ -65,6 +65,15 @@ class ManageReport extends ApiResource
     }
 
     /**
+     * Get Report Settings
+     * @return array
+     */
+    public function settings(): array
+    {
+        return $this->getApiRequestor()->getRequest('/api/report/manage/settings');
+    }
+
+    /**
      * Test Report
      *
      * @param array $params
