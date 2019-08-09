@@ -71,6 +71,35 @@ class ReportTest extends TestCase
     }
 
     /** @test **/
+    public function can_get_middleware_list()
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'MBLSolutions\Report\Middleware\HasAuthenticationGate'
+            ]
+        ]);
+
+        $response = $this->report->middleware();
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
+    /** @test **/
+    public function can_get_select_type_list()
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'MBLSolutions\Report\Select\CastString',
+                'MBLSolutions\Report\Select\CastUppercaseString',
+            ]
+        ]);
+
+        $response = $this->report->selectType();
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
+    /** @test **/
     public function can_get_model_list()
     {
         $this->mockExpectedHttpResponse([

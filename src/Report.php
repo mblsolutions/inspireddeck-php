@@ -61,6 +61,26 @@ class Report extends ApiResource
     }
 
     /**
+     * Get available report middleware
+     *
+     * @return array
+     */
+    public function middleware(): array
+    {
+        return $this->getApiRequestor()->getRequest('/api/report/middleware');
+    }
+
+    /**
+     * Get available report select types
+     *
+     * @return array
+     */
+    public function selectType(): array
+    {
+        return $this->getApiRequestor()->getRequest('/api/report/select/type');
+    }
+
+    /**
      * Get the Report Select Models
      *
      * @return array
