@@ -113,5 +113,19 @@ class ReportTest extends TestCase
         $this->assertEquals($response, $this->getMockedResponseBody());
     }
 
+    /** @test **/
+    public function can_generate_an_export_report_uri(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'uri' => 'http://localhost/report/1/export?signature=7783a30'
+        ]);
+
+        $response = $this->report->export(1, [
+            'status' => 'active'
+        ]);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
 
 }

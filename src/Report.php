@@ -90,4 +90,16 @@ class Report extends ApiResource
         return $this->getApiRequestor()->getRequest('/api/report/model');
     }
 
+    /**
+     * Export the report results
+     *
+     * @param int $id
+     * @param array $params
+     * @return array
+     */
+    public function export(int $id, array $params = []): array
+    {
+        return $this->getApiRequestor()->postRequest('/api/report/' . $id . '/export', $params);
+    }
+
 }

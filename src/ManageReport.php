@@ -76,12 +76,13 @@ class ManageReport extends ApiResource
     /**
      * Test Report
      *
+     * @param int $id
      * @param array $params
      * @return array
      */
-    public function test(array $params): array
+    public function test(int $id, array $params): array
     {
-        return $this->getApiRequestor()->postRequest('/api/report/manage/test', $params);
+        return $this->getApiRequestor()->postRequest('/api/report/manage/' . $id . '/test', $params);
     }
 
 

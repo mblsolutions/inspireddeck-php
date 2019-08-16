@@ -109,7 +109,7 @@ class ManageReportTest extends TestCase
             ]
         ]);
 
-        $response = $this->report->test([
+        $response = $this->report->test(1, [
             'name' => 'Test Report',
         ]);
 
