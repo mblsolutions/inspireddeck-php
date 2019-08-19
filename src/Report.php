@@ -2,7 +2,11 @@
 
 namespace MBLSolutions\InspiredDeck;
 
+use Exception;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
 use MBLSolutions\InspiredDeck\Api\ApiResource;
+use MBLSolutions\InspiredDeck\Exceptions\ReportRenderException;
 
 class Report extends ApiResource
 {
@@ -38,6 +42,7 @@ class Report extends ApiResource
      * @param int $id
      * @param array $params
      * @return array
+     * @throws ReportRenderException
      */
     public function render(int $id, array $params = []): array
     {
@@ -47,7 +52,11 @@ class Report extends ApiResource
             $uri = '/api/report/' . $id;
         }
 
-        return $this->getApiRequestor()->postRequest($uri, $params);
+        try {
+            return $this->getApiRequestor()->postRequest($uri, $params);
+        } catch (Exception $exception) {
+            throw new ReportRenderException($exception);
+        }
     }
     
     /**
