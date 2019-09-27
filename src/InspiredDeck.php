@@ -14,7 +14,7 @@ class InspiredDeck
 
     const AGENT = 'InspiredDeck-PHP';
 
-    const VERSION = '1.0.0';
+    const VERSION = '1.0.1';
 
     /**
      * Override the default baseUri
@@ -22,9 +22,11 @@ class InspiredDeck
      * @param string $baseUri
      * @return void
      */
-    public static function setBaseUri(string $baseUri)
+    public static function setBaseUri(string $baseUri = null): void
     {
-        self::$baseUri = $baseUri;
+        if ($baseUri) {
+            self::$baseUri = $baseUri;
+        }
     }
 
     /**
