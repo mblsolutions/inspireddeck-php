@@ -12,7 +12,7 @@ class InspiredDeckTest extends TestCase
     /** @test **/
     public function can_get_package_version()
     {
-        $this->assertEquals('1.0.0', InspiredDeck::VERSION);
+        $this->assertEquals('1.0.1', InspiredDeck::VERSION);
     }
 
     /** @test **/
