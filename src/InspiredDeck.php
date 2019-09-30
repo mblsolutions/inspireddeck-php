@@ -12,9 +12,12 @@ class InspiredDeck
     /** @var string $token */
     private static $token;
 
+    /** @var bool $verify */
+    private static $verifySSL = true;
+
     const AGENT = 'InspiredDeck-PHP';
 
-    const VERSION = '1.0.1';
+    const VERSION = '1.0.2';
 
     /**
      * Override the default baseUri
@@ -65,6 +68,27 @@ class InspiredDeck
         }
 
         return $token;
+    }
+
+    /**
+     * Set Verify SSL
+     *
+     * @param bool $verify
+     * @return void
+     */
+    public static function setVerifySSL(bool $verify): void
+    {
+        self::$verifySSL = $verify;
+    }
+
+    /**
+     * Get Verify SSL
+     *
+     * @return bool
+     */
+    public static function getVerifySSL(): bool
+    {
+        return self::$verifySSL;
     }
 
 }

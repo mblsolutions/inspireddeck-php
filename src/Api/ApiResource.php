@@ -17,6 +17,7 @@ abstract class ApiResource
     {
         $client = new Client([
             'base_uri' => InspiredDeck::getBaseUri(),
+            'verify' => InspiredDeck::getVerifySSL()
         ]);
 
         $this->apiRequestor = new ApiRequestor($client);

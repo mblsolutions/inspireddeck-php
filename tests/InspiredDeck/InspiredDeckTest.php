@@ -61,4 +61,19 @@ class InspiredDeckTest extends TestCase
         InspiredDeck::getToken();
     }
 
+    /** @test **/
+    public function can_get_verify_ssl(): void
+    {
+        $this->assertTrue(InspiredDeck::getVerifySSL());
+        $this->assertIsBool(InspiredDeck::getVerifySSL());
+    }
+
+    /** @test **/
+    public function can_set_verify_ssl(): void
+    {
+        InspiredDeck::setVerifySSL(false);
+
+        $this->assertFalse(InspiredDeck::getVerifySSL());
+    }
+
 }
