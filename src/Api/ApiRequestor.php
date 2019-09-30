@@ -55,7 +55,8 @@ class ApiRequestor
     {
         return $this->makeHttpRequest('get', $uri, [
             'headers' => $headers ?? $this->authenticatedHeaders(),
-            'query' => $params
+            'query' => $params,
+            'verify' => InspiredDeck::getVerifySSL()
         ]);
     }
 
@@ -72,7 +73,8 @@ class ApiRequestor
     {
         return $this->makeHttpRequest('post', $uri, [
             'headers' => $headers ?? $this->authenticatedHeaders(),
-            'json' => $params
+            'json' => $params,
+            'verify' => InspiredDeck::getVerifySSL()
         ]);
     }
 
@@ -89,7 +91,8 @@ class ApiRequestor
     {
         return $this->makeHttpRequest('patch', $uri, [
             'headers' => $headers ?? $this->authenticatedHeaders(),
-            'json' => $params
+            'json' => $params,
+            'verify' => InspiredDeck::getVerifySSL()
         ]);
     }
 
@@ -106,7 +109,8 @@ class ApiRequestor
     {
         return $this->makeHttpRequest('delete', $uri, [
             'headers' => $headers ?? $this->authenticatedHeaders(),
-            'query' => $params
+            'query' => $params,
+            'verify' => InspiredDeck::getVerifySSL()
         ]);
     }
 
