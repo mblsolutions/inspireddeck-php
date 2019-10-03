@@ -74,4 +74,15 @@ class Brand extends ApiResource
         return $this->getApiRequestor()->deleteRequest('/api/brand/' . $id);
     }
 
+    /**
+     * Resend Programme Activation
+     *
+     * @param $id
+     * @return array
+     */
+    public function resend($id): array
+    {
+        return $this->getApiRequestor()->postRequest('/api/programme/' . $id . '/activation/resend');
+    }
+
 }

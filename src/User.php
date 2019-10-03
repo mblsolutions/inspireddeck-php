@@ -65,4 +65,15 @@ class User extends ApiResource
         return $this->getApiRequestor()->deleteRequest('/api/user/' . $id);
     }
 
+    /**
+     * Resend User Activation
+     *
+     * @param $id
+     * @return array
+     */
+    public function resend($id): array
+    {
+        return $this->getApiRequestor()->postRequest('/api/user/' . $id . '/activation/resend');
+    }
+
 }

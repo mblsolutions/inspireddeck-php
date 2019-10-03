@@ -137,4 +137,20 @@ class BrandTest extends TestCase
         $this->assertEquals($response, $this->getMockedResponseBody());
     }
 
+    /** @test **/
+    public function can_resend_programme_activation(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'id' => 1,
+                'name' => 'Test Brand',
+                'active' => false
+            ]
+        ]);
+
+        $response = $this->brand->resend(1);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
 }
