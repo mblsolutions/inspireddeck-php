@@ -15,7 +15,7 @@ class CodeImport extends ApiResource
      */
     public function all(int $page = null): array
     {
-        return $this->getApiRequestor()->getRequest('/api/product/import', [
+        return $this->getApiRequestor()->getRequest('/api/code/import', [
             'page' => $page
         ]);
     }
@@ -28,7 +28,7 @@ class CodeImport extends ApiResource
      */
     public function create(array $params): array
     {
-        return $this->getApiRequestor()->postRequest('/api/product/import', $params);
+        return $this->getApiRequestor()->postRequest('/api/code/import', $params);
     }
 
     /**
@@ -39,7 +39,7 @@ class CodeImport extends ApiResource
      */
     public function show(string $uuid): array
     {
-        return $this->getApiRequestor()->getRequest('/api/product/import/' . $uuid);
+        return $this->getApiRequestor()->getRequest('/api/code/import/' . $uuid);
     }
 
 }
