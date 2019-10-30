@@ -34,4 +34,15 @@ class AssetBatch extends ApiResource
         ]);
     }
 
+    /**
+     * Show Asset Batch Codes
+     *
+     * @param int $id
+     * @return array
+     */
+    public function export(int $id): array
+    {
+        return $this->getApiRequestor()->postRequest('/api/asset-batch/' . $id . '/export');
+    }
+
 }

@@ -59,4 +59,16 @@ class AssetBatchTest extends TestCase
         $this->assertEquals($response, $this->getMockedResponseBody());
     }
 
+    /** @test **/
+    public function export(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'uri' => 'https://localhost/asset-batch/1/export?expires=60&signature=1234abcd'
+        ]);
+
+        $response = $this->assetBatch->export(1);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
 }
