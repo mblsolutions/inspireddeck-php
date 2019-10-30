@@ -45,4 +45,6 @@ class AssetBatch extends ApiResource
         return $this->getApiRequestor()->postRequest('/api/asset-batch/' . $id . '/export');
     }
 
+
+
 }
