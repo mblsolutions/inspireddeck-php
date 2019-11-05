@@ -76,4 +76,15 @@ class User extends ApiResource
         return $this->getApiRequestor()->postRequest('/api/user/' . $id . '/activation/resend');
     }
 
+    /**
+     * Deactivate a User
+     *
+     * @param $id
+     * @return array
+     */
+    public function deactivate($id): array
+    {
+        return $this->getApiRequestor()->postRequest('/api/user/' . $id . '/deactivate');
+    }
+
 }
