@@ -211,7 +211,6 @@ class UserTest extends TestCase
         $this->mockExpectedHttpResponse([
             'data' => [
                 'email' => 'john.doe@example.org',
-                'uri' => 'https://localhost/user/1/password/reset?expires=60&token=abcd1234',
                 'token' => 'abcd1234',
             ]
         ]);

@@ -89,13 +89,13 @@ class User extends ApiResource
 
     /**
      * Request a Forgotten Password reset link
-     * 
-     * @param array $data
+     *
+     * @param array $params
      * @return array
      */
-    public function forgottenPassword(array $data): array
+    public function forgottenPassword(array $params): array
     {
-        return $this->getApiRequestor()->postRequest('/api/password/forgot');
+        return $this->getApiRequestor()->postRequest('/api/password/forgot', $params, []);
     }
 
 
