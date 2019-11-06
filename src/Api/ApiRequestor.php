@@ -54,7 +54,7 @@ class ApiRequestor
     public function getRequest(string $uri, array $params = [], array $headers = null): array
     {
         return $this->makeHttpRequest('get', $uri, [
-            'headers' => $headers ?? $this->authenticatedHeaders(),
+            'headers' => array_merge($headers, $this->defaultHeaders()) ?? $this->authenticatedHeaders(),
             'query' => $params,
             'verify' => InspiredDeck::getVerifySSL()
         ]);
@@ -72,7 +72,7 @@ class ApiRequestor
     public function postRequest(string $uri, array $params = [], array $headers = null): array
     {
         return $this->makeHttpRequest('post', $uri, [
-            'headers' => $headers ?? $this->authenticatedHeaders(),
+            'headers' => array_merge($headers, $this->defaultHeaders()) ?? $this->authenticatedHeaders(),
             'json' => $params,
             'verify' => InspiredDeck::getVerifySSL()
         ]);
@@ -90,7 +90,7 @@ class ApiRequestor
     public function patchRequest(string $uri, array $params = [], array $headers = null): array
     {
         return $this->makeHttpRequest('patch', $uri, [
-            'headers' => $headers ?? $this->authenticatedHeaders(),
+            'headers' => array_merge($headers, $this->defaultHeaders()) ?? $this->authenticatedHeaders(),
             'json' => $params,
             'verify' => InspiredDeck::getVerifySSL()
         ]);
@@ -108,7 +108,7 @@ class ApiRequestor
     public function deleteRequest(string $uri, array $params = [], array $headers = null): array
     {
         return $this->makeHttpRequest('delete', $uri, [
-            'headers' => $headers ?? $this->authenticatedHeaders(),
+            'headers' => array_merge($headers, $this->defaultHeaders()) ?? $this->authenticatedHeaders(),
             'query' => $params,
             'verify' => InspiredDeck::getVerifySSL()
         ]);
