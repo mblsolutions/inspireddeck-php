@@ -98,6 +98,4 @@ class User extends ApiResource
         return $this->getApiRequestor()->postRequest('/api/password/forgot', $params, []);
     }
 
-
-
 }
