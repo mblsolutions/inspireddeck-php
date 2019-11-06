@@ -182,4 +182,45 @@ class UserTest extends TestCase
         $this->assertEquals($response, $this->getMockedResponseBody());
     }
 
+    /** @test **/
+    public function can_deactivate_user(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'id' => 1,
+                'name' => 'John Doe',
+                'email' => 'john.doe@example.com',
+                'role' => 'programme_manager',
+                'active' => false,
+                'brand' => [
+                    'id' => 1,
+                    'name' => 'Test Brand',
+                    'active' => false
+                ]
+            ]
+        ]);
+
+        $response = $this->user->deactivate(1);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+    
+    /** @test **/
+    public function can_request_password_reset(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'email' => 'john.doe@example.org',
+                'uri' => 'https://localhost/user/1/password/reset?expires=60&token=abcd1234',
+                'token' => 'abcd1234',
+            ]
+        ]);
+
+        $response = $this->user->forgottenPassword([
+            'email' => 'john.doe@example.org'
+        ]);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
 }

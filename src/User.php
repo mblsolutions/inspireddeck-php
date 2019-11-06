@@ -87,4 +87,17 @@ class User extends ApiResource
         return $this->getApiRequestor()->postRequest('/api/user/' . $id . '/deactivate');
     }
 
+    /**
+     * Request a Forgotten Password reset link
+     * 
+     * @param array $data
+     * @return array
+     */
+    public function forgottenPassword(array $data): array
+    {
+        return $this->getApiRequestor()->postRequest('/api/password/forgot');
+    }
+
+
+
 }
