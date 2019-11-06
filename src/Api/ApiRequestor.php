@@ -54,7 +54,7 @@ class ApiRequestor
     public function getRequest(string $uri, array $params = [], array $headers = null): array
     {
         return $this->makeHttpRequest('get', $uri, [
-            'headers' => $headers ? array_merge($headers, $this->defaultHeaders()) : $this->authenticatedHeaders(),
+            'headers' => $headers !== null ? $this->defaultHeaders($headers) : $this->authenticatedHeaders(),
             'query' => $params,
             'verify' => InspiredDeck::getVerifySSL()
         ]);
@@ -72,7 +72,7 @@ class ApiRequestor
     public function postRequest(string $uri, array $params = [], array $headers = null): array
     {
         return $this->makeHttpRequest('post', $uri, [
-            'headers' => $headers ? array_merge($headers, $this->defaultHeaders()) : $this->authenticatedHeaders(),
+            'headers' => $headers !== null ? $this->defaultHeaders($headers) : $this->authenticatedHeaders(),
             'json' => $params,
             'verify' => InspiredDeck::getVerifySSL()
         ]);
@@ -90,7 +90,7 @@ class ApiRequestor
     public function patchRequest(string $uri, array $params = [], array $headers = null): array
     {
         return $this->makeHttpRequest('patch', $uri, [
-            'headers' => $headers ? array_merge($headers, $this->defaultHeaders()) : $this->authenticatedHeaders(),
+            'headers' => $headers !== null ? $this->defaultHeaders($headers) : $this->authenticatedHeaders(),
             'json' => $params,
             'verify' => InspiredDeck::getVerifySSL()
         ]);
@@ -108,7 +108,7 @@ class ApiRequestor
     public function deleteRequest(string $uri, array $params = [], array $headers = null): array
     {
         return $this->makeHttpRequest('delete', $uri, [
-            'headers' => $headers ? array_merge($headers, $this->defaultHeaders()) : $this->authenticatedHeaders(),
+            'headers' => $headers !== null ? $this->defaultHeaders($headers) : $this->authenticatedHeaders(),
             'query' => $params,
             'verify' => InspiredDeck::getVerifySSL()
         ]);
@@ -117,14 +117,15 @@ class ApiRequestor
     /**
      * Get the Default Request Headers
      *
+     * @param array $headers
      * @return array
      */
-    public function defaultHeaders(): array
+    public function defaultHeaders(array $headers = []): array
     {
-        return [
+        return array_merge($headers, [
             'User-Agent' => InspiredDeck::AGENT . '/' . InspiredDeck::VERSION,
             'Accept'     => 'application/json',
-        ];
+        ]);
     }
 
     /**
