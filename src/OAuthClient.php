@@ -10,11 +10,14 @@ class OAuthClient extends ApiResource
     /**
      * Show OAuth Clients
      *
+     * @param int|null $page
      * @return array
      */
-    public function all(): array
+    public function all(int $page = null): array
     {
-        return $this->getApiRequestor()->getRequest('/api/oauth/client');
+        return $this->getApiRequestor()->getRequest('/api/oauth/client', [
+            'page' => $page
+        ]);
     }
 
     /**
@@ -61,5 +64,38 @@ class OAuthClient extends ApiResource
     {
         return $this->getApiRequestor()->deleteRequest('/api/oauth/client/' . $id);
     }
-    
+
+    /**
+     * Reset Client Secret
+     *
+     * @param $id
+     * @return array
+     */
+    public function resetSecret($id): array
+    {
+        return $this->getApiRequestor()->postRequest('/api/oauth/client/' . $id . '/reset-secret');
+    }
+
+    /**
+     * Reset Encryption Key for Client
+     *
+     * @param $id
+     * @return array
+     */
+    public function resetEncryption($id): array
+    {
+        return $this->getApiRequestor()->postRequest('/api/oauth/client/' . $id . '/reset-encryption');
+    }
+
+    /**
+     * Revoke all User tokens associated with Client
+     *
+     * @param $id
+     * @return array
+     */
+    public function revokeToken($id): array
+    {
+        return $this->getApiRequestor()->postRequest('/api/oauth/client/' . $id . '/revoke-token');
+    }
+
 }

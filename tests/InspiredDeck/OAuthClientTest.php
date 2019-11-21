@@ -122,4 +122,55 @@ class OAuthClientTest extends TestCase
         $this->assertEquals($response, $this->getMockedResponseBody());
     }
 
+    /** @test **/
+    public function can_reset_client_secret()
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'id' => 1,
+                'name' => 'Test Client',
+                'redirect' => null,
+                'revoked' => true
+            ]
+        ]);
+
+        $response = $this->client->resetSecret(1);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
+    /** @test **/
+    public function can_reset_encryption_key()
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'id' => 1,
+                'name' => 'Test Client',
+                'redirect' => null,
+                'revoked' => true
+            ]
+        ]);
+
+        $response = $this->client->resetEncryption(1);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
+    /** @test **/
+    public function can_revoke_user_tokens()
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'id' => 1,
+                'name' => 'Test Client',
+                'redirect' => null,
+                'revoked' => true
+            ]
+        ]);
+
+        $response = $this->client->revokeToken(1);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
 }
