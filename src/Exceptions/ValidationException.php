@@ -22,7 +22,7 @@ class ValidationException extends Exception
         $json = json_decode($message, true);
 
         if ($json) {
-            $this->errors = $json['errors'] ?? [];
+            $this->errors = $json['errors'] ?? ['message' => $json['message']];
         }
 
         parent::__construct($json['message'] ?? $message, $code, $previous);
