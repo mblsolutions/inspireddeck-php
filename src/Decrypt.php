@@ -1,0 +1,54 @@
+<?php
+
+namespace MBLSolutions\InspiredDeck;
+
+use MBLSolutions\InspiredDeck\Exceptions\DecryptionException;
+use RuntimeException;
+
+class Decrypt
+{
+    /** @var string */
+    protected $key;
+
+    /** @var string */
+    protected $cipher;
+
+    /**
+     * Inspired Deck Data Decryption
+     *
+     * @param string $key
+     * @param string $cipher
+     */
+    public function __construct(string $key, string $cipher = 'AES-128-CBC')
+    {
+        $this->key = base64_decode($key);
+        $this->cipher = $cipher;
+    }
+
+    /**
+     * Decrypt Data
+     *
+     * @param $data
+     * @param bool $unserialize
+     * @return mixed
+     */
+    public function data($data, bool $unserialize = true)
+    {
+        $encryptionObject = json_decode(base64_decode($data), true);
+
+        if (!is_array($encryptionObject)) {
+            throw new DecryptionException('Encrypted string is not valid decryption object');
+        }
+
+        $iv = base64_decode($encryptionObject['iv']);
+
+        $decrypted = openssl_decrypt($encryptionObject['value'], 'AES-128-CBC', $this->key, 0, $iv);
+
+        if ($decrypted === false) {
+            throw new DecryptionException('Could not decrypt the data.');
+        }
+
+        return $unserialize ? unserialize($decrypted, []) : $data;
+    }
+
+}

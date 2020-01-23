@@ -17,7 +17,7 @@ class InspiredDeck
 
     const AGENT = 'InspiredDeck-PHP';
 
-    const VERSION = '1.1.0';
+    const VERSION = '1.1.1';
 
     /**
      * Override the default baseUri
