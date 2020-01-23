@@ -3,7 +3,6 @@
 namespace MBLSolutions\InspiredDeck;
 
 use MBLSolutions\InspiredDeck\Exceptions\DecryptionException;
-use RuntimeException;
 
 class Decrypt
 {
@@ -42,13 +41,13 @@ class Decrypt
 
         $iv = base64_decode($encryptionObject['iv']);
 
-        $decrypted = openssl_decrypt($encryptionObject['value'], 'AES-128-CBC', $this->key, 0, $iv);
+        $decrypted = openssl_decrypt($encryptionObject['value'], $this->cipher, $this->key, 0, $iv);
 
         if ($decrypted === false) {
             throw new DecryptionException('Could not decrypt the data.');
         }
 
-        return $unserialize ? unserialize($decrypted, []) : $data;
+        return $unserialize ? unserialize($decrypted) : $data;
     }
 
 }
