@@ -3,6 +3,7 @@
 namespace MBLSolutions\InspiredDeck\Api;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use MBLSolutions\InspiredDeck\InspiredDeck;
 
 abstract class ApiResource
@@ -12,12 +13,16 @@ abstract class ApiResource
 
     /**
      * Inspired Deck API Resource
+     *
+     * @param ClientInterface|null $client
      */
-    public function __construct()
+    public function __construct(ClientInterface $client = null)
     {
-        $client = new Client([
-            'base_uri' => InspiredDeck::getBaseUri()
-        ]);
+        if ($client === null) {
+            $client = new Client([
+                'base_uri' => InspiredDeck::getBaseUri()
+            ]);
+        }
 
         $this->apiRequestor = new ApiRequestor($client);
     }
