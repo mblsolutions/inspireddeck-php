@@ -7,6 +7,9 @@ use Throwable;
 
 class ValidationException extends Exception
 {
+    /** @var array */
+    protected $json;
+
     /** @var $errors */
     protected $errors;
 
@@ -19,13 +22,23 @@ class ValidationException extends Exception
      */
     public function __construct(string $message, int $code, Throwable $previous = null)
     {
-        $json = json_decode($message, true);
+        $this->json = json_decode($message, true);
 
-        if ($json) {
-            $this->errors = $this->formatErrorDetails($json);
+        if ($this->json) {
+            $this->errors = $this->formatErrorDetails($this->json);
         }
 
-        parent::__construct($json['message'] ?? $message, $code, $previous);
+        parent::__construct($this->json['message'] ?? $message, $code, $previous);
+    }
+
+    /**
+     * Get the Error Message Body
+     * 
+     * @return array
+     */
+    public function getMessageBody(): array
+    {
+        return $this->json;
     }
 
     /**
