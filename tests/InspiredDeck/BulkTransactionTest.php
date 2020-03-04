@@ -42,7 +42,7 @@ class BulkTransactionTest extends TestCase
     }
 
     /** @test **/
-    public function can_create()
+    public function can_show()
     {
         $this->mockExpectedHttpResponse([
             'data' => [
@@ -53,11 +53,19 @@ class BulkTransactionTest extends TestCase
             ]
         ]);
 
-        $response = $this->bulk->create([
-            'uuid' => 'd1778bd4-89ca-4d02-9c30-d1e7ca0688a4',
-            'key' => 'tmp/d1778bd4-89ca-4d02-9c30-d1e7ca0688a4',
-            'name' => 'Batch_card_issue.csv',
+        $response = $this->bulk->show('d1778bd4-89ca-4d02-9c30-d1e7ca0688a4');
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
+    /** @test **/
+    public function export(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'uri' => 'https://localhost/bulk/d1778bd4-89ca-4d02-9c30-d1e7ca0688a4/export?expires=60&signature=1234abcd'
         ]);
+
+        $response = $this->bulk->export('d1778bd4-89ca-4d02-9c30-d1e7ca0688a4');
 
         $this->assertEquals($response, $this->getMockedResponseBody());
     }
