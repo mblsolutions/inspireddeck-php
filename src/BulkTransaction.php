@@ -41,7 +41,7 @@ class BulkTransaction extends ApiResource
      */
     public function show(string $id): array
     {
-        return $this->getApiRequestor()->postRequest('/api/bulk/transaction/' . $id);
+        return $this->getApiRequestor()->getRequest('/api/bulk/transaction/' . $id);
     }
 
     /**
