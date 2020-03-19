@@ -55,4 +55,14 @@ class BulkTransaction extends ApiResource
         return $this->getApiRequestor()->postRequest('/api/bulk/transaction/' . $id . '/export');
     }
 
+    /**
+     * Get Bulk Transaction Metrics
+     *
+     * @return array
+     */
+    public function metrics(): array
+    {
+        return $this->getApiRequestor()->getRequest('/api/bulk/transaction/metrics');
+    }
+
 }

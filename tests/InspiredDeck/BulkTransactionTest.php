@@ -59,13 +59,30 @@ class BulkTransactionTest extends TestCase
     }
 
     /** @test **/
-    public function export(): void
+    public function can_export(): void
     {
         $this->mockExpectedHttpResponse([
             'uri' => 'https://localhost/bulk/d1778bd4-89ca-4d02-9c30-d1e7ca0688a4/export?expires=60&signature=1234abcd'
         ]);
 
         $response = $this->bulk->export('d1778bd4-89ca-4d02-9c30-d1e7ca0688a4');
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+    
+    /** @test **/
+    public function can_get_metrics(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'pending' => 1,
+                'processing' => 1,
+                'completed' => 1,
+                'total' => 3
+            ]
+        ]);
+
+        $response = $this->bulk->metrics();
 
         $this->assertEquals($response, $this->getMockedResponseBody());
     }
