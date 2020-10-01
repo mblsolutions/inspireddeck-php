@@ -163,6 +163,8 @@ A successful transaction will return updated information about the code (see upd
 
 ### Transaction History
 
+Code transaction history can be obtained using the Transaction History object.
+
 ```php
 \MBLSolutions\InspiredDeck\InspiredDeck::setToken('eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjBmOGMwNDAxZDAy');
 
