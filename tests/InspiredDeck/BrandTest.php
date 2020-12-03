@@ -153,4 +153,42 @@ class BrandTest extends TestCase
         $this->assertEquals($response, $this->getMockedResponseBody());
     }
 
+
+    /** @test **/
+    public function can_get_brand_users(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                [
+                    'id' => 1,
+                    'name' => 'John Doe',
+                    'email' => 'john.doe@example.com',
+                    'role' => 'programme_manager',
+                    'active' => true,
+                    'brand' => [
+                        'id' => 1,
+                        'name' => 'Test Brand',
+                        'active' => true
+                    ]
+                ],
+                [
+                    'id' => 2,
+                    'name' => 'John Doe',
+                    'email' => 'john.doe@example.com',
+                    'role' => 'programme_manager',
+                    'active' => true,
+                    'brand' => [
+                        'id' => 1,
+                        'name' => 'Test Brand',
+                        'active' => true
+                    ]
+                ]
+            ]
+        ]);
+
+        $response = $this->brand->users(1);
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
 }

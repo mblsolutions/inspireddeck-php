@@ -85,4 +85,15 @@ class Brand extends ApiResource
         return $this->getApiRequestor()->postRequest('/api/programme/' . $id . '/activation/resend');
     }
 
+    /**
+     * Get a list of Brand Users
+     *
+     * @param $id
+     * @return array
+     */
+    public function users($id): array
+    {
+        return $this->getApiRequestor()->getRequest('/api/brand/' . $id . '/user');
+    }
+
 }
