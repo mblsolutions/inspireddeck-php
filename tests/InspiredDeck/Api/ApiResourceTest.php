@@ -11,23 +11,23 @@ class ApiResourceTest extends TestCase
 {
     
     /** @test **/
-    public function can_get_api_requestor()
+    public function can_get_api_requestor(): void
     {
         $stub = $this->getMockBuilder(ApiResource::class)
                      ->getMock();
 
-        $this->assertInstanceOf(ApiRequestor::class, $stub->getApiRequestor());
+        self::assertInstanceOf(ApiRequestor::class, $stub->getApiRequestor());
     }
 
     /** @test **/
-    public function can_set_api_requestor()
+    public function can_set_api_requestor(): void
     {
         $stub = $this->getMockBuilder(ApiResource::class)
                      ->getMock();
 
         $newApiRequestor = new ApiRequestor(new Client);
 
-        $this->assertInstanceOf(ApiRequestor::class, $stub->setApiRequestor($newApiRequestor));
+        self::assertInstanceOf(ApiRequestor::class, $stub->setApiRequestor($newApiRequestor));
     }
 
 }
