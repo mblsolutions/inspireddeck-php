@@ -13,7 +13,7 @@ class UserTest extends TestCase
     protected $user;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

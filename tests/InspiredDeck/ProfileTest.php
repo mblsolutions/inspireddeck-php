@@ -12,7 +12,7 @@ class ProfileTest extends TestCase
     protected $profile;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

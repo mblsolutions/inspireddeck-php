@@ -12,7 +12,7 @@ class TransferTest extends TestCase
     protected $transfer;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

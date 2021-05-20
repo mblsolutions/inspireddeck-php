@@ -12,7 +12,7 @@ class BalanceTest extends TestCase
     protected $balance;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

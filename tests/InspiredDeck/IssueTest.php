@@ -12,7 +12,7 @@ class IssueTest extends TestCase
     protected $issue;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
