@@ -12,7 +12,7 @@ class AlgorithmTest extends TestCase
     protected $algorithm;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

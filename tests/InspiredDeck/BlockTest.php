@@ -12,7 +12,7 @@ class BlockTest extends TestCase
     protected $block;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

@@ -12,7 +12,7 @@ class RoleTest extends TestCase
     protected $role;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

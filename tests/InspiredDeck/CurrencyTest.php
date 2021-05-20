@@ -12,7 +12,7 @@ class CurrencyTest extends TestCase
     protected $currency;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

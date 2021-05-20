@@ -13,7 +13,7 @@ class ReverseTransactionTest extends TestCase
     protected $reverseTransaction;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

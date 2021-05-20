@@ -12,7 +12,7 @@ class TransactionHistoryTest extends TestCase
     protected $transactionHistory;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

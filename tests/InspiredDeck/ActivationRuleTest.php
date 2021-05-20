@@ -12,7 +12,7 @@ class ActivationRuleTest extends TestCase
     protected $activationRule;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

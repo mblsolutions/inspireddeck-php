@@ -13,7 +13,7 @@ class TransactionImportTest extends TestCase
     protected $import;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

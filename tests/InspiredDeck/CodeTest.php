@@ -12,7 +12,7 @@ class CodeTest extends TestCase
     protected $code;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

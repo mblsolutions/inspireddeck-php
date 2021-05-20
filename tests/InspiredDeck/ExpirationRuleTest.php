@@ -12,7 +12,7 @@ class ExpirationRuleTest extends TestCase
     protected $expirationRule;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

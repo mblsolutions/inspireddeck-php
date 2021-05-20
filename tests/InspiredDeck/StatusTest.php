@@ -12,7 +12,7 @@ class StatusTest extends TestCase
     protected $status;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

@@ -12,7 +12,7 @@ class TypeTest extends TestCase
     protected $type;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

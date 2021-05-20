@@ -12,7 +12,7 @@ class MetricTest extends TestCase
     protected $metric;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

@@ -12,7 +12,7 @@ class AssetBatchTest extends TestCase
     protected $assetBatch;
 
     /** {@inheritdoc} **/
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
