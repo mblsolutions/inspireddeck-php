@@ -12,10 +12,10 @@ class TransactionHistory extends ApiResource
      *
      * @param int $serial
      * @param int|null $page
-     * @param int $limit
+     * @param int|null $limit
      * @return array
      */
-    public function all(int $serial, int $page = null, $limit = null): array
+    public function all(int $serial, ?int $page = null, ?int $limit = null): array
     {
         return $this->getApiRequestor()->getRequest('/api/transaction/' . $serial, [
             'page' => $page,
