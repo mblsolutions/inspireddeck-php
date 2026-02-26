@@ -13,7 +13,7 @@ class Code extends ApiResource
      * @param int|null $page
      * @return array
      */
-    public function all(int $page = null): array
+    public function all(?int $page = null): array
     {
         return $this->getApiRequestor()->getRequest('/api/code', [
             'page' => $page

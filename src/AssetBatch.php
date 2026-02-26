@@ -13,7 +13,7 @@ class AssetBatch extends ApiResource
      * @param int|null $page
      * @return array
      */
-    public function all(int $page = null): array
+    public function all(?int $page = null): array
     {
         return $this->getApiRequestor()->getRequest('/api/asset-batch', [
             'page' => $page
@@ -27,7 +27,7 @@ class AssetBatch extends ApiResource
      * @param int|null $page
      * @return array
      */
-    public function show(int $id, int $page = null): array
+    public function show(int $id, ?int $page = null): array
     {
         return $this->getApiRequestor()->getRequest('/api/asset-batch/' . $id, [
             'page' => $page

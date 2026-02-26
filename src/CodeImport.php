@@ -13,7 +13,7 @@ class CodeImport extends ApiResource
      * @param int|null $page
      * @return array
      */
-    public function all(int $page = null): array
+    public function all(?int $page = null): array
     {
         return $this->getApiRequestor()->getRequest('/api/code/import', [
             'page' => $page

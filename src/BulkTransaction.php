@@ -14,7 +14,7 @@ class BulkTransaction extends ApiResource
      * @param int|null $limit
      * @return array
      */
-    public function all(int $page = null, int $limit = null): array
+    public function all(?int $page = null, ?int $limit = null): array
     {
         return $this->getApiRequestor()->getRequest('/api/bulk/transaction', [
             'page' => $page,
