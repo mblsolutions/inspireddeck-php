@@ -10,11 +10,14 @@ use MBLSolutions\InspiredDeck\Api\ApiRequestor;
 use MBLSolutions\InspiredDeck\InspiredDeck;
 use ReflectionClass;
 use ReflectionException;
+use Psr\Http\Message\RequestInterface;
 
 class TestCase extends \PHPUnit\Framework\TestCase
 {
     /** @var Response $mockedResponse */
     private $mockedResponse;
+
+    private MockHandler $guzzleMock;
 
     /**
      * Reset an Inspired Deck Property to be NULL
@@ -51,12 +54,12 @@ class TestCase extends \PHPUnit\Framework\TestCase
             json_encode($response)
         );
 
-        $mock = new MockHandler([
+        $this->guzzleMock = new MockHandler([
             $this->mockedResponse
         ]);
 
         $client = new Client([
-            'handler' => HandlerStack::create($mock)
+            'handler' => HandlerStack::create($this->guzzleMock)
         ]);
 
         ApiRequestor::setHttpClient($client);
@@ -70,6 +73,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
     protected function getMockedResponseBody(): array
     {
         return json_decode($this->mockedResponse->getBody(), true);
+    }
+
+    protected function getMockedLastRequest(): ?RequestInterface
+    {
+        return $this->guzzleMock->getLastRequest();
     }
 
 }
