@@ -58,4 +58,35 @@ class PeriodTest extends TestCase
         $this->assertEquals($response, $this->getMockedResponseBody());
     }
 
+    /** @test **/
+    public function can_get_select_list_with_context(): void
+    {
+        $this->mockExpectedHttpResponse([
+            'data' => [
+                'SECONDS' => [
+                    'id' => 'seconds',
+                    'name' => 'Seconds'
+                ],
+                'MINUTES' => [
+                    'id' => 'minutes',
+                    'name' => 'Minutes'
+                ],
+                'HOURS' => [
+                    'id' => 'hours',
+                    'name' => 'Hours'
+                ],
+                'DAYS' => [
+                    'id' => 'days',
+                    'name' => 'Days'
+                ],
+            ]
+        ]);
+
+        $response = $this->period->select('asset-rate-limit');
+
+        $this->assertEquals('context=asset-rate-limit', $this->getMockedLastRequest()->getUri()->getQuery());
+
+        $this->assertEquals($response, $this->getMockedResponseBody());
+    }
+
 }

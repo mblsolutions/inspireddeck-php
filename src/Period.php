@@ -10,11 +10,14 @@ class Period extends ApiResource
     /**
      * Select Periods for Input
      *
+     * @param string|null $context
      * @return array
      */
-    public function select(): array
+    public function select(?string $context = null): array
     {
-        return $this->getApiRequestor()->getRequest('/api/period/select');
+        $params = $context ? ['context' => $context] : [];
+
+        return $this->getApiRequestor()->getRequest('/api/period/select', $params);
     }
 
 }
