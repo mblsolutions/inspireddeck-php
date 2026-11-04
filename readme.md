@@ -49,6 +49,11 @@ $deckAuthentication = new \MBLSolutions\InspiredDeck\Authentication();
 $authentication = $deckAuthentication->password(1, 'auth-secret', 'john.doe@exmaple.com', 'password');
 ```
 
+To send a two-factor code, pass `otp` or `recovery_code` as the optional 5th argument (other keys are ignored):
+`$deckAuthentication->password(1, 'auth-secret', 'john.doe@example.com', 'password', ['otp' => '123456'])`.
+A failed login throws `AuthenticationException`; `getError()` returns the `error` code and `getResponse()` the decoded body.
+`$deckAuthentication->logout()` ends the current access token.
+
 A successful authentication will return an OAuth response containing access, refresh and user information.
 
 ```php
