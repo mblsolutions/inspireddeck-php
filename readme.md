@@ -49,6 +49,11 @@ $deckAuthentication = new \MBLSolutions\InspiredDeck\Authentication();
 $authentication = $deckAuthentication->password(1, 'auth-secret', 'john.doe@exmaple.com', 'password');
 ```
 
+To send a two-factor code, pass `otp` or `recovery_code` as the optional 5th argument (other keys are ignored):
+`$deckAuthentication->password(1, 'auth-secret', 'john.doe@example.com', 'password', ['otp' => '123456'])`.
+A failed login throws `AuthenticationException`; `getError()` returns the `error` code and `getResponse()` the decoded body.
+`$deckAuthentication->logout()` ends the current access token.
+
 A successful authentication will return an OAuth response containing access, refresh and user information.
 
 ```php
@@ -67,6 +72,9 @@ A successful authentication will return an OAuth response containing access, ref
 
 We recommend this information is stored and reused between requests (the authentication will expire '31622400' seconds 
 from the moment the authentication is issued).
+
+When a login finishes the two-factor setup, the response also has `recovery_codes`. Show them to the user once and
+remove them before you store the response.
 
 Use your `access_token` by setting the token in the InspiredDeck Configuration. The PHP library will automatically 
 attach this token to each api request (within the current request, each PHP request would need to re-set this token).

@@ -162,6 +162,21 @@ class ApiRequestorTest extends TestCase
     }
 
     /** @test **/
+    public function post_request_passes_extra_client_options()
+    {
+        InspiredDeck::setToken('token');
+        $mock = new MockHandler([HttpResponseStubs::success(), HttpResponseStubs::success()]);
+        $apiRequestor = new ApiRequestor(new Client(['handler' => HandlerStack::create($mock)]));
+
+        $apiRequestor->postRequest('brand', ['name' => 'Test Brand']);
+        $this->assertArrayNotHasKey('timeout', $mock->getLastOptions());
+
+        $apiRequestor->postRequest('brand', ['name' => 'Test Brand'], null, ['timeout' => 5]);
+        $this->assertEquals(5, $mock->getLastOptions()['timeout']);
+        $this->assertEquals('{"name":"Test Brand"}', (string) $mock->getLastRequest()->getBody());
+    }
+
+    /** @test **/
     public function can_make_a_http_patch_request()
     {
         $mock = new MockHandler([

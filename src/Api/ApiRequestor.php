@@ -66,16 +66,17 @@ class ApiRequestor
      * @param string $uri
      * @param array $params
      * @param array|null $headers
+     * @param array $options extra HTTP client options, e.g. timeout
      * @return array
      * @throws mixed
      */
-    public function postRequest(string $uri, array $params = [], ?array $headers = null): array
+    public function postRequest(string $uri, array $params = [], ?array $headers = null, array $options = []): array
     {
-        return $this->makeHttpRequest('post', $uri, [
+        return $this->makeHttpRequest('post', $uri, array_merge([
             'headers' => $headers !== null ? $this->defaultHeaders($headers) : $this->authenticatedHeaders(),
             'json' => $params,
             'verify' => InspiredDeck::getVerifySSL()
-        ]);
+        ], $options));
     }
 
     /**

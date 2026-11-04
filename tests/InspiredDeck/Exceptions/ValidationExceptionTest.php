@@ -37,4 +37,15 @@ class ValidationExceptionTest extends TestCase
         ]);
     }
 
+    /** @test **/
+    public function body_that_is_not_a_json_object_gives_an_empty_message_body()
+    {
+        foreach (['Unprocessable', '1', '"text"', 'true'] as $message) {
+            $exception = new ValidationException($message, 422);
+
+            $this->assertEquals($message, $exception->getMessage());
+            $this->assertEquals([], $exception->getMessageBody());
+        }
+    }
+
 }

@@ -22,7 +22,8 @@ class ValidationException extends Exception
      */
     public function __construct(string $message, int $code, ?Throwable $previous = null)
     {
-        $this->json = json_decode($message, true);
+        $json = json_decode($message, true);
+        $this->json = is_array($json) ? $json : null;
 
         if ($this->json) {
             $this->errors = $this->formatErrorDetails($this->json);
@@ -38,7 +39,7 @@ class ValidationException extends Exception
      */
     public function getMessageBody(): array
     {
-        return $this->json;
+        return $this->json ?? [];
     }
 
     /**
