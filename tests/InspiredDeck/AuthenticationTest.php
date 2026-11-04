@@ -352,6 +352,34 @@ class AuthenticationTest extends TestCase
         }
     }
 
+    /** @test */
+    public function logout_ends_the_current_token()
+    {
+        InspiredDeck::setToken('current-token');
+        $mock = new MockHandler([new Response(200, ['Content-Type' => 'application/json'], '{"message":"Logged out"}')]);
+        ApiRequestor::setHttpClient(new Client(['handler' => HandlerStack::create($mock)]));
+
+        $response = $this->authentication->logout();
+
+        $this->assertEquals(['message' => 'Logged out'], $response);
+        $this->assertEquals('POST', $mock->getLastRequest()->getMethod());
+        $this->assertEquals('/api/logout', $mock->getLastRequest()->getUri()->getPath());
+        $this->assertEquals('Bearer current-token', $mock->getLastRequest()->getHeaderLine('Authorization'));
+        $this->assertEquals(Authentication::LOGOUT_TIMEOUT, $mock->getLastOptions()['timeout']);
+    }
+
+    /** @test */
+    public function logout_with_an_ended_token_throws_an_authentication_exception()
+    {
+        $this->expectException(AuthenticationException::class);
+        $this->expectExceptionCode(401);
+
+        InspiredDeck::setToken('ended-token');
+        $this->mockExpectedHttpResponse(['message' => 'Unauthenticated.'], 401);
+
+        $this->authentication->logout();
+    }
+
     /**
      * Call the password grant and return the exception it throws
      *

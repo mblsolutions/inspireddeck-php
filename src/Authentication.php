@@ -14,6 +14,9 @@ class Authentication extends OAuthResource
     /** Optional login fields sent with the password grant */
     private const EXTRA_FIELDS = ['otp', 'recovery_code'];
 
+    /** Seconds to wait for the logout call */
+    const LOGOUT_TIMEOUT = 5;
+
     /**
      * Authenticate with the Inspired Deck API using Password Grant
      *
@@ -60,6 +63,20 @@ class Authentication extends OAuthResource
         } catch (Exception $exception) {
             throw new AuthenticationException($exception->getMessage(), $exception->getCode(), $exception->getPrevious());
         }
+    }
+
+    /**
+     * End the current access token
+     *
+     * @return array
+     * @throws GuzzleException
+     * @throws AuthenticationException
+     */
+    public function logout(): array
+    {
+        return $this->getApiRequestor()->postRequest('/api/logout', [], null, [
+            'timeout' => self::LOGOUT_TIMEOUT,
+        ]);
     }
 
 }
