@@ -73,6 +73,9 @@ A successful authentication will return an OAuth response containing access, ref
 We recommend this information is stored and reused between requests (the authentication will expire '31622400' seconds 
 from the moment the authentication is issued).
 
+When a login finishes the two-factor setup, the response also has `recovery_codes`. Show them to the user once and
+remove them before you store the response.
+
 Use your `access_token` by setting the token in the InspiredDeck Configuration. The PHP library will automatically 
 attach this token to each api request (within the current request, each PHP request would need to re-set this token).
 
