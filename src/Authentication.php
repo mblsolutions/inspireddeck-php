@@ -4,8 +4,10 @@ namespace MBLSolutions\InspiredDeck;
 
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\RequestException;
 use MBLSolutions\InspiredDeck\Api\OAuthResource;
 use MBLSolutions\InspiredDeck\Exceptions\AuthenticationException;
+use MBLSolutions\InspiredDeck\Exceptions\ValidationException;
 
 class Authentication extends OAuthResource
 {
@@ -44,6 +46,17 @@ class Authentication extends OAuthResource
 
             return $response;
 
+        } catch (ValidationException $exception) {
+            throw new AuthenticationException($exception->getMessage(), $exception->getCode(), $exception->getPrevious(), $exception->getMessageBody());
+        } catch (RequestException $exception) {
+            $body = $exception->hasResponse() ? (string) $exception->getResponse()->getBody() : '';
+            $decoded = json_decode($body, true);
+            $response = is_array($decoded) ? $decoded : [];
+
+            // A 429 passes the full body as the message
+            $message = $exception->getCode() === 429 && $response !== [] ? $body : $exception->getMessage();
+
+            throw new AuthenticationException($message, $exception->getCode(), $exception->getPrevious(), $response);
         } catch (Exception $exception) {
             throw new AuthenticationException($exception->getMessage(), $exception->getCode(), $exception->getPrevious());
         }
