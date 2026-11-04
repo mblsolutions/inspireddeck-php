@@ -15,6 +15,8 @@ class InspiredDeck
     /** @var bool $verify */
     private static $verifySSL = true;
 
+    private static ?string $originVerify = null;
+
     const AGENT = 'InspiredDeck-PHP';
 
     const VERSION = '1.2.1';
@@ -89,6 +91,16 @@ class InspiredDeck
     public static function getVerifySSL(): bool
     {
         return self::$verifySSL;
+    }
+
+    public static function setOriginVerify(?string $originVerify): void
+    {
+        self::$originVerify = $originVerify;
+    }
+
+    public static function getOriginVerify(): ?string
+    {
+        return self::$originVerify;
     }
 
 }

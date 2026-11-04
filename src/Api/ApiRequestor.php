@@ -122,6 +122,18 @@ class ApiRequestor
      */
     public function defaultHeaders(array $headers = []): array
     {
+        $originVerify = InspiredDeck::getOriginVerify();
+
+        if ($originVerify !== null && $originVerify !== '') {
+            foreach (array_keys($headers) as $name) {
+                if (strcasecmp($name, 'X-Origin-Verify') === 0) {
+                    unset($headers[$name]);
+                }
+            }
+
+            $headers['X-Origin-Verify'] = $originVerify;
+        }
+
         return array_merge($headers, [
             'User-Agent' => InspiredDeck::AGENT . '/' . InspiredDeck::VERSION,
             'Accept' => 'application/json',
@@ -152,6 +164,10 @@ class ApiRequestor
      */
     private function makeHttpRequest(string $method, string $uri, array $options = [])
     {
+        if (isset($options['headers']['X-Origin-Verify'])) {
+            $options['allow_redirects'] = false;
+        }
+
         try {
             $response = $this->getHttpClient()->request($method, $uri, $options);
 
